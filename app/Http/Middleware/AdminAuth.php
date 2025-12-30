@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\Usuario;
 
 class AdminAuth
 {
@@ -18,7 +19,7 @@ class AdminAuth
         }
 
         // Verificar si el usuario está activo
-        $usuario = \App\Models\Usuario::find(session('admin_id'));
+        $usuario = Usuario::find(session('admin_id'));
         if (!$usuario || !$usuario->activo) {
             $username = session('admin_username', 'Usuario');
             session()->flush(); // Limpiar toda la sesión

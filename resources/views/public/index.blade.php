@@ -12,44 +12,43 @@
         }
 
         :root {
-            --celeste: #00A8E8;
-            --amarillo: #F5E727;
-            --rojo: #F53527;
-            --gris-oscuro: #2C3E50;
-            --gris-claro: #ECF0F1;
+            --rojo-gob: #C1272D;
+            --rojo-oscuro: #9B1E23;
+            --negro: #1C1C1C;
+            --gris-oscuro: #333333;
+            --gris-medio: #666666;
+            --gris-claro: #F5F5F5;
+            --blanco: #FFFFFF;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', 'Helvetica', sans-serif;
             background-color: var(--gris-claro);
+            color: var(--negro);
         }
 
         .header {
-            background-color: var(--celeste);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            background-color: var(--rojo-gob);
+            color: var(--blanco);
+            padding: 20px;
+            border-bottom: 4px solid var(--negro);
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 20px;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            background-color: white;
-            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--blanco);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--amarillo);
             overflow: hidden;
             padding: 5px;
         }
@@ -61,32 +60,32 @@
         }
 
         .header h1 {
-            font-size: 32px;
-            margin-bottom: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 3px;
         }
 
         .header p {
-            font-size: 16px;
-            opacity: 0.9;
+            font-size: 14px;
+            opacity: 0.95;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 30px auto;
+            max-width: 1400px;
+            margin: 20px auto;
             padding: 0 20px;
         }
 
         .filter-section {
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--blanco);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
         }
 
         .filter-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             align-items: end;
         }
@@ -97,30 +96,29 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: bold;
-            color: var(--gris-oscuro);
+            color: var(--negro);
+            font-size: 13px;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            font-size: 13px;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--celeste);
+            border-color: var(--rojo-gob);
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 8px 20px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             transition: all 0.3s;
             text-decoration: none;
@@ -128,159 +126,176 @@
         }
 
         .btn-primary {
-            background-color: var(--celeste);
-            color: white;
+            background-color: var(--rojo-gob);
+            color: var(--blanco);
         }
 
         .btn-primary:hover {
-            background-color: #0087c1;
+            background-color: var(--rojo-oscuro);
         }
 
         .btn-secondary {
-            background-color: #6c757d;
-            color: white;
+            background-color: var(--gris-oscuro);
+            color: var(--blanco);
         }
 
-        .documents-grid {
-            display: grid;
-            gap: 20px;
+        .btn-secondary:hover {
+            background-color: var(--negro);
         }
 
-        .document-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+        /* Tabla de documentos */
+        .table-container {
+            background-color: var(--blanco);
+            border: 1px solid #ddd;
+            overflow-x: auto;
         }
 
-        .document-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        .documents-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
         }
 
-        .document-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 15px;
+        .documents-table thead {
+            background-color: var(--negro);
+            color: var(--blanco);
+        }
+
+        .documents-table thead th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid var(--rojo-gob);
+        }
+
+        .documents-table tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .documents-table tbody tr:hover {
+            background-color: var(--gris-claro);
+        }
+
+        .documents-table tbody td {
+            padding: 10px;
+            vertical-align: middle;
         }
 
         .document-code {
-            background-color: var(--celeste);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
             font-weight: bold;
-            font-size: 14px;
-        }
-
-        .document-date {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .document-category {
-            display: inline-block;
-            background-color: var(--amarillo);
-            color: var(--gris-oscuro);
-            padding: 5px 12px;
-            border-radius: 15px;
+            color: var(--negro);
             font-size: 12px;
+        }
+
+        .document-type {
+            display: inline-block;
+            background-color: var(--rojo-gob);
+            color: var(--blanco);
+            padding: 3px 8px;
+            font-size: 11px;
             font-weight: bold;
-            margin-bottom: 10px;
         }
 
         .document-description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            color: var(--gris-medio);
+            line-height: 1.4;
+            max-width: 400px;
         }
 
-        .document-actions {
-            display: flex;
-            gap: 10px;
+        .btn-action {
+            padding: 6px 12px;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 5px;
+            font-weight: bold;
         }
 
         .btn-download {
-            background-color: var(--celeste);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: background-color 0.3s;
+            background-color: var(--rojo-gob);
+            color: var(--blanco);
         }
 
         .btn-download:hover {
-            background-color: #0087c1;
+            background-color: var(--rojo-oscuro);
         }
 
         .btn-view {
-            background-color: var(--amarillo);
-            color: var(--gris-oscuro);
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            background-color: var(--blanco);
+            color: var(--negro);
+            border: 1px solid var(--negro);
         }
 
         .btn-view:hover {
-            background-color: #e6c200;
+            background-color: var(--negro);
+            color: var(--blanco);
         }
 
         .no-results {
             text-align: center;
-            padding: 60px 20px;
-            color: #999;
+            padding: 40px 20px;
+            color: var(--gris-medio);
+            background-color: var(--blanco);
+            border: 1px solid #ddd;
         }
 
         .no-results h3 {
-            font-size: 24px;
+            font-size: 18px;
             margin-bottom: 10px;
+            color: var(--negro);
         }
 
         .pagination {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
+            gap: 5px;
+            margin-top: 20px;
         }
 
         .pagination a,
         .pagination span {
-            padding: 10px 15px;
-            background-color: white;
-            border-radius: 5px;
+            padding: 8px 12px;
+            background-color: var(--blanco);
+            border: 1px solid #ddd;
             text-decoration: none;
-            color: var(--gris-oscuro);
+            color: var(--negro);
+            font-size: 13px;
+        }
+
+        .pagination a:hover {
+            background-color: var(--gris-claro);
         }
 
         .pagination .active {
-            background-color: var(--celeste);
-            color: white;
+            background-color: var(--rojo-gob);
+            color: var(--blanco);
+            border-color: var(--rojo-gob);
         }
 
         .admin-link {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: var(--rojo);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 12px 20px;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-size: 13px;
         }
 
         .admin-link:hover {
-            transform: scale(1.1);
+            background-color: var(--rojo-gob);
+        }
+
+        .results-count {
+            padding: 10px 15px;
+            background-color: var(--blanco);
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: var(--gris-medio);
         }
     </style>
 </head>
@@ -302,7 +317,7 @@
             <form method="GET">
                 <div class="filter-grid">
                     <div class="form-group">
-                        <label>📁 Categoría</label>
+                        <label>Categoría</label>
                         <select name="tipo" class="form-control">
                             <option value="">Todas las categorías</option>
                             @foreach($tipos as $tipo)
@@ -314,7 +329,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>📅 Año</label>
+                        <label>Año</label>
                         <select name="anno" class="form-control">
                             <option value="">Todos los años</option>
                             @foreach($annos as $anno)
@@ -326,12 +341,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label>🔍 Buscar</label>
+                        <label>Buscar</label>
                         <input type="text" name="search" class="form-control" value="{{ request('search') }}" placeholder="Número o descripción...">
                     </div>
 
                     <div class="form-group">
-                        <label>📄 Mostrar</label>
+                        <label>Mostrar</label>
                         <select name="per_page" class="form-control">
                             <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
                             <option value="20" {{ request('per_page', 20) == 20 ? 'selected' : '' }}>20</option>
@@ -349,36 +364,50 @@
         </div>
 
         @if($documentos->count() > 0)
-            <div class="documents-grid">
-                @foreach($documentos as $documento)
-                    <div class="document-card">
-                        <div class="document-header">
-                            <div>
-                                <div class="document-code">
-                                    📄 {{ $documento->tipo }}-{{ $documento->numero }}-{{ $documento->anno }}-MDNCH
-                                </div>
-                            </div>
-                            <div class="document-date">
-                                📅 {{ $documento->fecha->format('d/m/Y') }}
-                            </div>
-                        </div>
+            <div class="results-count">
+                <strong>{{ $documentos->total() }}</strong> documentos encontrados
+            </div>
 
-                        <span class="document-category">{{ $documento->tipoDocumento->nombre }}</span>
-
-                        @if($documento->descripcion)
-                            <p class="document-description">{{ $documento->descripcion }}</p>
-                        @endif
-
-                        <div class="document-actions">
-                            <a href="{{ route('public.documento.download', $documento->id) }}" class="btn-download">
-                                📥 Descargar PDF
-                            </a>
-                            <a href="{{ route('public.documento.view', $documento->id) }}" class="btn-view" target="_blank">
-                                👁️ Ver
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
+            <div class="table-container">
+                <table class="documents-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 180px;">CÓDIGO</th>
+                            <th style="width: 150px;">TIPO</th>
+                            <th style="width: 100px;">FECHA</th>
+                            <th>DESCRIPCIÓN</th>
+                            <th style="width: 180px;">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($documentos as $documento)
+                            <tr>
+                                <td>
+                                    <div class="document-code">
+                                        {{ $documento->tipo }}-{{ $documento->numero }}-{{ $documento->anno }}-MDNCH
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="document-type">{{ $documento->tipoDocumento->nombre }}</span>
+                                </td>
+                                <td>{{ $documento->fecha->format('d/m/Y') }}</td>
+                                <td>
+                                    <div class="document-description">
+                                        {{ $documento->descripcion ?? 'Sin descripción' }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="{{ route('public.documento.download', $documento->id) }}" class="btn-action btn-download">
+                                        Descargar
+                                    </a>
+                                    <a href="{{ route('public.documento.view', $documento->id) }}" class="btn-action btn-view" target="_blank">
+                                        Ver
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
 
             <div class="pagination">
@@ -386,12 +415,12 @@
             </div>
         @else
             <div class="no-results">
-                <h3>📭 No se encontraron documentos</h3>
+                <h3>No se encontraron documentos</h3>
                 <p>Intente con otros filtros de búsqueda</p>
             </div>
         @endif
     </div>
 
-    <a href="{{ route('admin.login') }}" class="admin-link">🔒 Acceso Admin</a>
+    <a href="{{ route('admin.login') }}" class="admin-link">Acceso Admin</a>
 </body>
 </html>

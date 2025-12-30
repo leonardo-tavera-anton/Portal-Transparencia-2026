@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
@@ -61,7 +62,7 @@ class UsuarioController extends Controller
         }
 
         // Actualizar directamente con DB para evitar el mutador
-        \DB::table('usuarios')
+        DB::table('usuarios')
             ->where('id', $id)
             ->update($datos);
 

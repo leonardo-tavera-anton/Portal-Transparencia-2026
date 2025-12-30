@@ -39,6 +39,7 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::post('/documentos', [DocumentoController::class, 'store'])->name('admin.documentos.store');
     Route::get('/documentos/{id}/editar', [DocumentoController::class, 'edit'])->name('admin.documentos.edit');
     Route::put('/documentos/{id}', [DocumentoController::class, 'update'])->name('admin.documentos.update');
+    Route::delete('/documentos/{id}', [DocumentoController::class, 'destroy'])->name('admin.documentos.destroy');
     Route::post('/documentos/{id}/toggle', [DocumentoController::class, 'togglePublicado'])->name('admin.documentos.toggle');
     Route::get('/documentos/{id}/descargar', [DocumentoController::class, 'download'])->name('admin.documentos.download');
     

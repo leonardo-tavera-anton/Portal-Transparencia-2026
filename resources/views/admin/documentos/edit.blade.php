@@ -7,7 +7,8 @@
     <h2 style="color: var(--gris-oscuro); margin-bottom: 30px;">Editar Documento</h2>
 
     <div style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-        <strong>⚠️ Código Actual:</strong> {{ $documento->tipo }}-{{ $documento->numero }}-{{ $documento->anno }}
+        <strong>⚠️ Código Actual:</strong> {{ $documento->tipo }}-{{ $documento->numero }}-{{ $documento->anno }}-MDNCH
+        <br><small style="color: #856404;">Si cambia el tipo, número o fecha (año), el código se actualizará automáticamente.</small>
     </div>
 
     <form action="{{ route('admin.documentos.update', $documento->id) }}" method="POST" enctype="multipart/form-data">

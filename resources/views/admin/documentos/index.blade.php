@@ -85,13 +85,18 @@
                         </td>
                         <td>
                             <div class="actions">
-                                <a href="{{ route('admin.documentos.download', $doc->id) }}" class="btn btn-primary btn-sm" target="_blank">📥</a>
-                                <a href="{{ route('admin.documentos.edit', $doc->id) }}" class="btn btn-warning btn-sm">✏️</a>
+                                <a href="{{ route('admin.documentos.download', $doc->id) }}" class="btn btn-primary btn-sm" target="_blank" title="Descargar">📥</a>
+                                <a href="{{ route('admin.documentos.edit', $doc->id) }}" class="btn btn-warning btn-sm" title="Editar">✏️</a>
                                 <form action="{{ route('admin.documentos.toggle', $doc->id) }}" method="POST" style="display: inline;">
                                     @csrf
-                                    <button type="submit" class="btn {{ $doc->publicado ? 'btn-danger' : 'btn-success' }} btn-sm">
+                                    <button type="submit" class="btn {{ $doc->publicado ? 'btn-danger' : 'btn-success' }} btn-sm" title="{{ $doc->publicado ? 'Despublicar' : 'Publicar' }}">
                                         {{ $doc->publicado ? '🚫' : '✅' }}
                                     </button>
+                                </form>
+                                <form action="{{ route('admin.documentos.destroy', $doc->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('¿Está seguro de eliminar este documento? Esta acción no se puede deshacer.')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">🗑️</button>
                                 </form>
                             </div>
                         </td>

@@ -119,42 +119,67 @@ class DocumentoController extends Controller
             'archivo' => 'nullable|file|mimes:pdf|max:10240',
         ]);
 
-        // Verificar duplicados (excluyendo el actual)
+        // Obtener el año de la nueva fecha
+        $nuevo_anno = date('Y', strtotime($request->fecha));
+
+        // Verificar duplicados con el nuevo año (excluyendo el documento actual)
         $existe = Documento::where('tipo', $request->tipo)
                           ->where('numero', $request->numero)
-                          ->where('anno', $documento->anno)
+                          ->where('anno', $nuevo_anno)
                           ->where('id', '!=', $id)
                           ->exists();
 
         if ($existe) {
-            return back()->withInput()->with('error', 'Ya existe otro documento con este número y tipo en el año ' . $documento->anno);
+            return back()->withInput()->with('error', 'Ya existe otro documento con este código: ' . $request->tipo . '-' . $request->numero . '-' . $nuevo_anno . '-MDNCH');
         }
+
+        // Crear año si no existe
+        Anno::firstOrCreate(['anno' => $nuevo_anno]);
+
+        // Verificar si cambió el año, tipo o número para renombrar archivo
+        $cambio_codigo = ($documento->anno != $nuevo_anno) || 
+                        ($documento->tipo != $request->tipo) || 
+                        ($documento->numero != $request->numero);
 
         $datos = [
             'tipo' => $request->tipo,
             'numero' => $request->numero,
+            'anno' => $nuevo_anno,
             'fecha' => $request->fecha,
             'descripcion' => $request->descripcion,
         ];
 
-        // Si se sube nuevo archivo, reemplazar el anterior
-        if ($request->hasFile('archivo')) {
+        // Si cambió el código o se subió nuevo archivo
+        if ($cambio_codigo || $request->hasFile('archivo')) {
             // Eliminar archivo anterior
             if ($documento->archivo_path && Storage::disk('documentos')->exists($documento->archivo_path)) {
                 Storage::disk('documentos')->delete($documento->archivo_path);
             }
 
-            // Generar nuevo nombre
+            // Generar nuevo nombre con el nuevo año
             $numero_formateado = str_pad($request->numero, 3, '0', STR_PAD_LEFT);
-            $nombre_archivo = $request->tipo . '_' . $numero_formateado . '-' . $documento->anno . '-MDNCH.pdf';
+            $nombre_archivo = $request->tipo . '_' . $numero_formateado . '-' . $nuevo_anno . '-MDNCH.pdf';
 
-            // Crear carpeta
+            // Crear carpeta con nuevo tipo/año
             $tipo_obj = Tipo::where('prefijo', $request->tipo)->first();
-            $carpeta = $tipo_obj->codigo . '/' . $documento->anno;
+            $carpeta = $tipo_obj->codigo . '/' . $nuevo_anno;
 
-            // Guardar nuevo archivo
-            $archivo = $request->file('archivo');
-            $ruta = $archivo->storeAs($carpeta, $nombre_archivo, 'documentos');
+            if ($request->hasFile('archivo')) {
+                // Guardar nuevo archivo subido
+                $archivo = $request->file('archivo');
+                $ruta = $archivo->storeAs($carpeta, $nombre_archivo, 'documentos');
+            } else {
+                // Copiar el archivo existente con el nuevo nombre
+                $archivo_anterior = Storage::disk('documentos')->path($documento->archivo_path);
+                $ruta_nueva = $carpeta . '/' . $nombre_archivo;
+                
+                // Asegurar que existe el directorio
+                Storage::disk('documentos')->makeDirectory($carpeta);
+                
+                // Copiar archivo
+                Storage::disk('documentos')->put($ruta_nueva, file_get_contents($archivo_anterior));
+                $ruta = $ruta_nueva;
+            }
 
             $datos['archivo_path'] = $ruta;
         }
@@ -183,5 +208,20 @@ class DocumentoController extends Controller
         }
 
         return Storage::disk('documentos')->download($documento->archivo_path);
+    }
+
+    public function destroy($id)
+    {
+        $documento = Documento::findOrFail($id);
+        
+        // Eliminar el archivo físico
+        if ($documento->archivo_path && Storage::disk('documentos')->exists($documento->archivo_path)) {
+            Storage::disk('documentos')->delete($documento->archivo_path);
+        }
+        
+        // Eliminar el registro
+        $documento->delete();
+        
+        return redirect()->route('admin.documentos.index')->with('success', 'Documento eliminado exitosamente.');
     }
 }
