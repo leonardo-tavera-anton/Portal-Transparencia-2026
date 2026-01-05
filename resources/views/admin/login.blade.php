@@ -12,28 +12,32 @@
         }
 
         :root {
-            --celeste: #00A8E8;
-            --amarillo: #F5E727;
-            --rojo: #F53527;
-            --gris-oscuro: #2C3E50;
-            --gris-claro: #ECF0F1;
+            --primary: #0ea5e9;
+            --primary-hover: #0284c7;
+            --bg-body: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--celeste);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            color: var(--text-main);
         }
 
         .login-container {
             background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            width: 400px;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 400px;
         }
 
         .logo {
@@ -45,12 +49,13 @@
             width: 100px;
             height: 100px;
             background-color: white;
-            border-radius: 10px;
+            border-radius: 1rem;
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--amarillo);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
             overflow: hidden;
             padding: 10px;
         }
@@ -62,13 +67,14 @@
         }
 
         .logo h1 {
-            font-size: 22px;
-            color: var(--gris-oscuro);
+            font-size: 1.5rem;
+            color: var(--text-main);
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
         .logo p {
-            color: #666;
+            color: var(--text-muted);
             font-size: 14px;
         }
 
@@ -78,58 +84,96 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            color: var(--gris-oscuro);
-            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            background-color: white;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--celeste);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.1);
         }
 
         .btn-login {
             width: 100%;
-            padding: 15px;
-            background-color: var(--celeste);
+            padding: 0.875rem;
+            background-color: var(--primary);
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-login:hover {
-            background-color: #0087c1;
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
         }
 
         .alert {
-            padding: 12px;
-            border-radius: 5px;
+            padding: 1rem;
+            border-radius: 0.5rem;
             margin-bottom: 20px;
             text-align: center;
+            font-size: 0.9rem;
         }
 
         .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
         }
 
         .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .spinner {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        .btn-login.loading .spinner {
+            display: block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -167,8 +211,20 @@
                 <input type="password" name="password" class="form-control" required>
             </div>
 
-            <button type="submit" class="btn-login">Iniciar Sesión</button>
+            <button type="submit" class="btn-login">
+                <span class="spinner"></span>
+                <span>Iniciar Sesión</span>
+            </button>
         </form>
     </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const btn = this.querySelector('.btn-login');
+            btn.classList.add('loading');
+            btn.disabled = true;
+            btn.querySelector('span:last-child').textContent = 'Iniciando...';
+        });
+    </script>
 </body>
 </html>
