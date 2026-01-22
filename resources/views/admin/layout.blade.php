@@ -15,11 +15,11 @@
             --primary: #0ea5e9;
             --primary-hover: #0284c7;
             --secondary: #64748b;
-            --success: #10b981;
+            --success: #10b981; 
             --danger: #ef4444;
             --warning: #f59e0b;
             --bg-body: #f1f5f9;
-            --bg-sidebar: #0f172a;
+            --bg-sidebar: #2850ae;
             --text-main: #334155;
             --text-light: #94a3b8;
             --white: #ffffff;
@@ -326,7 +326,7 @@
     <aside class="sidebar">
         <div class="logo-container">
             <div class="logo-img">
-                <img src="{{ asset('/imagenes/logo.jpg') }}" alt="Logo MDNCH">
+                <img src="{{ asset('/imagenes/LOGO2-MDNCH.png') }}" alt="Logo MDNCH">
             </div>
             <h2>Municipalidad de<br>Nuevo Chimbote</h2>
         </div>

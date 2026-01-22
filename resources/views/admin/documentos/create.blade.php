@@ -24,7 +24,7 @@
 
             <div class="form-group">
                 <label>Número <span style="color: var(--rojo);">*</span></label>
-                <input type="text" name="numero" class="form-control" value="{{ old('numero') }}" required placeholder="Ej: 001">
+                <input type="text" name="numero" class="form-control" value="{{ old('numero') }}" required placeholder="Ej: 1">
                 <small style="color: #666;">Sin ceros a la izquierda</small>
             </div>
         </div>

@@ -38,6 +38,7 @@
             border: 1px solid var(--border-color);
             width: 100%;
             max-width: 400px;
+            
         }
 
         .logo {
@@ -46,16 +47,15 @@
         }
 
         .logo-img {
-            width: 100px;
-            height: 100px;
+            width: 300px;
+            height: 150px;
             background-color: white;
             border-radius: 1rem;
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--border-color);
+            border: none;
             overflow: hidden;
             padding: 10px;
         }
@@ -181,7 +181,7 @@
     <div class="login-container">
         <div class="logo">
             <div class="logo-img">
-                <img src="{{ asset('/imagenes/logo.jpg') }}" alt="Logo MDNCH">
+                <img src="{{ asset('/imagenes/LOGO final.png') }}" alt="Logo MDNCH">
             </div>
             <h1>Portal de Transparencia</h1>
             <p>Municipalidad de Nuevo Chimbote</p>

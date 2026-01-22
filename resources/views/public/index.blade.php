@@ -43,9 +43,9 @@
         }
 
         .logo {
-            width: 60px;
-            height: 60px;
-            background-color: var(--blanco);
+            width: 80px;
+            height: 80px;
+            background-color: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -303,7 +303,7 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <img src="{{ asset('/imagenes/logo.jpg') }}" alt="Logo MDNCH">
+                <img src="{{ asset('/imagenes/LOGO2-MDNCH.png') }}" alt="Logo MDNCH">
             </div>
             <div>
                 <h1>Portal de Transparencia</h1>
