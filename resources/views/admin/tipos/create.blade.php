@@ -15,6 +15,12 @@
         background-color: #218838;
         border-color: #1e7e34;
     }
+        .btn-secondary {
+        background-color: #de3232;
+        border-color #ac0909;
+        color: white;
+        font-weight: bold;
+    }
 </style>
 <div class="content-box">
     <h2 style="color: var(--gris-oscuro); margin-bottom: 30px;">Nueva Categoría</h2>
@@ -39,9 +45,9 @@
             <small style="color: #666;">Se usará en el código del documento (OM-001-2025-MDNCH)</small>
         </div>
 
-        <div style="display: flex; gap: 10px;">
+        <div style="display: flex; gap: 10px;">´
             <button type="submit" class="btn btn-primary">💾 Guardar Categoría</button>
-            <a href="{{ route('admin.tipos.index') }}" class="btn btn-secondary">❌ Cancelar</a>
+            <a href="{{ route('admin.tipos.index') }}" class="btn btn-secondary">⛔ Cancelar</a>
         </div>
     </form>
 </div>

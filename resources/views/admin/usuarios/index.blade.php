@@ -3,6 +3,18 @@
 @section('title', 'Usuarios')
 
 @section('content')
+<style>
+    .btn-warning {
+        background-color: #3b94d0; 
+        border-color: #0c4d73;
+        color: white;
+        font-weight: bold;
+    }
+    .content-box .btn-warning:hover {
+        background-color: #ecae28;
+        border-color: #c09a1d;
+    } 
+</style>
 <div class="content-box">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
         <h2 style="color: var(--gris-oscuro);">Gestión de Usuarios</h2>

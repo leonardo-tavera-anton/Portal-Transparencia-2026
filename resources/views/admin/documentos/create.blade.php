@@ -16,6 +16,12 @@
         background-color: #218838;
         border-color: #1e7e34;
     }
+        .btn-secondary {
+        background-color: #de3232;
+        border-color #ac0909;
+        color: white;
+        font-weight: bold;
+    }
 </style>
 
 <div class="content-box">
@@ -67,7 +73,7 @@
 
         <div style="display: flex; gap: 10px;">
             <button type="submit" class="btn btn-primary">💾 Guardar Documento</button>
-            <a href="{{ route('admin.documentos.index') }}" class="btn btn-secondary">❌ Cancelar</a>
+            <a href="{{ route('admin.documentos.index') }}" class="btn btn-secondary">⛔ Cancelar</a>
         </div>
     </form>
 </div>
