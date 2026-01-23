@@ -12,8 +12,8 @@
         }
 
         :root {
-            --primary: #0ea5e9;
-            --primary-hover: #0284c7;
+            --primary: #0089c8;
+            --primary-hover: #5cc1f3;
             --bg-body: #f8fafc;
             --text-main: #0f172a;
             --text-muted: #64748b;

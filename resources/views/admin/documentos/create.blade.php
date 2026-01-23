@@ -3,6 +3,21 @@
 @section('title', 'Nuevo Documento')
 
 @section('content')
+
+<style>
+    .btn-primary {
+        background-color: #28a745; 
+        border-color: #28a745;
+        color: white;
+        font-weight: bold;
+    }
+
+    .content-box .btn-primary:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+</style>
+
 <div class="content-box">
     <h2 style="color: var(--gris-oscuro); margin-bottom: 30px;">Nuevo Documento</h2>
 

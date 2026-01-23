@@ -320,7 +320,19 @@
             padding: 0.25rem 0.5rem;
             font-size: 0.75rem;
         }
+        .btn-primary {
+        background-color: #28a745; 
+        border-color: #28a745;
+        color: white;
+        font-weight: bold;
+        }
+
+        .content-box .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
     </style>
+    
 </head>
 <body>
     <aside class="sidebar">

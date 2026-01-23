@@ -3,6 +3,21 @@
 @section('title', 'Documentos')
 
 @section('content')
+
+<style>
+    .btn-primary {
+        background-color: #28a745; 
+        border-color: #28a745;
+        color: white;
+        font-weight: bold;
+    }
+
+    .content-box .btn-primary:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+</style>
+
 <div class="content-box">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
         <h2 style="color: var(--gris-oscuro);">Gestión de Documentos</h2>

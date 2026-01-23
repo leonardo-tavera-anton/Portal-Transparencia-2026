@@ -89,6 +89,17 @@
         font-weight: 700;
         color: var(--text-main);
     }
+        .btn-primary {
+        background-color: #28a745; 
+        border-color: #28a745;
+        color: white;
+        font-weight: bold;
+    }
+
+    .content-box .btn-primary:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
 </style>
 
 <div class="welcome-section">
